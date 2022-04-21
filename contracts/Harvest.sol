@@ -34,12 +34,11 @@ contract Harvest {
             isStakable[_collection],
             "Harvest.harvest: collection isn't stakable"
         );
-
         require(paidFee[_user], "Harvest.harvest: fee not paid");
 
-        llth.mint(_user, _rewards * (10**18));
-
         paidFee[_user] = false;
+
+        llth.mint(_user, _rewards * (10**18));
     }
 
     function setCollection(address _collection, bool _isStakable)
